@@ -1,0 +1,711 @@
+/* =================================================== */
+/* 1. BETŰTÍPUS IMPORTÁLÁSA*/
+/* =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+/* =================================================== */
+/* 2. ALAP BEÁLLÍTÁSOK*/
+/* =================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #E0F7FA;       
+    --nav-bg: #003366;         
+    --text-color: #333;        
+    --white: #fff;
+    --btn-hover: rgba(255, 255, 255, 0.2); 
+    --kiemeles-kek: #007BFF;       
+    --table-header-bg: #003366;    
+    --table-category-bg: #E3F2FD;  
+    --table-category-text: #003366; 
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0; 
+}
+
+/* Képek reszponzivitása */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =================================================== */
+/* 3. FEJLÉC ÉS NAVIGÁCIÓ (Mobile & Tablet nézet)*/
+/* =================================================== */
+
+.main-header {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    border-radius: 15px;       
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    margin: 10px;       
+}
+
+/*(Flexbox - Oszlopos) */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px; 
+}
+
+.logo img {
+    height: 80px;
+    width: 80px;                            
+    background-color: #fff;   
+    border-radius: 50%;        
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    object-fit: contain;       /*logó ne torzuljon a körön belül */
+}
+
+
+.header-container h1 {
+    font-size: 2rem;           
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;    
+    gap: 15px;                 
+    width: 100%;               
+}
+
+/* GOMBOK */
+.main-nav li, .main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 12px 25px;
+    border-radius: 8px;
+    
+    min-height: 65px; 
+    
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    text-align: center;     
+    
+
+    border: 2px solid transparent; 
+    
+    box-sizing: border-box; 
+    
+    transition: all 0.3s ease; 
+    cursor: pointer;
+    
+    /*Véletlen elcsúszás ellen*/
+    backface-visibility: hidden; 
+}
+
+.main-nav a:hover, .main-nav li:hover {
+    background-color: var(--btn-hover);
+    
+    border-color: rgba(255, 255, 255, 0.5); 
+    
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* =================================================== */
+/* 4. LAPTOP ÉS DESKTOP NÉZET
+/* =================================================== */
+
+@media (min-width: 1024px) {
+    .header-container {
+        flex-direction: row;      
+        justify-content: space-between; 
+        padding: 10px 30px;
+    }
+
+    .main-nav {
+        flex-grow: 0; 
+    }
+
+    .main-nav ul {
+        flex-direction: row; 
+        align-items: center;
+    }
+
+    .header-container h1 {
+        font-size: 2.2rem;
+        margin: 0 20px;
+        flex-grow: 1;
+        text-align: left;
+    }
+}
+
+/* =================================================== */
+/* 5. TARTALOM ÉS EGYÉB FORMÁZÁSOK */
+/* =================================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+section h3 {
+    font-size: 2.5rem;
+    color: var(--nav-bg);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/*Grid - 3 oszlop*/
+.image {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /*felesleg*/
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.image img:hover {
+    transform: scale(1.07);
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--nav-bg);
+    color: white;
+    margin-top: 50px;
+    border-radius: 15px 15px 0 0;
+}
+
+/* =================================================== */
+/* TÁBLÁZAT STÍLUS (Távok)
+/* =================================================== */
+
+
+
+@media (max-width: 768px) {
+    .table-responsive-wrapper {
+        width: 100%;
+        overflow-x: auto; /* vízszintes görgetés, ha a táblázat túl széles */
+        margin-bottom: 20px;
+    }
+}
+
+.tavok-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    
+    
+    border-radius: 10px; 
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
+    background-color: var(--white); 
+    border: none;
+}
+
+.tavok-table thead th {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    font-weight: 700;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: none;
+}
+
+
+.tavok-table th, .tavok-table td {
+    padding: 12px 15px;
+    text-align: left;
+    
+    border-bottom: 1px solid #E0E0E0; 
+    border-right: 1px solid #F0F0F0;
+}
+
+
+.tavok-table tbody th {
+    font-weight: 600;
+    background-color: var(--bg-color);
+}
+
+
+.tavok-table th:last-child, .tavok-table td:last-child {
+    border-right: none;
+}
+.tavok-table tbody tr:last-child td,
+.tavok-table tbody tr:last-child th {
+    border-bottom: none;
+}
+
+
+
+.tavok-table tbody tr:nth-child(odd) {
+    background-color: var(--white);
+}
+.tavok-table tbody tr:nth-child(even) {
+    background-color: #FAFAFA;
+}
+
+/* =================================================== */
+/* DEFINÍCIÓS LISTA*/
+/* =================================================== */
+
+/* Fő szekció címek (H2, H3) */
+section h2, section h3 {
+    color: var(--nav-bg); 
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #E0E0E0;
+    padding-bottom: 5px;
+}
+section h2 {
+    font-size: 1.8rem;
+}
+section h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+
+
+dl {
+    margin-bottom: 30px; 
+    padding: 0 10px;
+}
+
+
+dt {
+    font-weight: 700; 
+    font-size: 1.2rem;
+    color: var(--kiemeles-kek); 
+    margin-top: 20px;
+    margin-bottom: 5px;
+    
+    position: relative;
+    padding-left: 20px;
+}
+dt::before {
+    content: "🔷";
+    color: var(--kiemeles-kek);
+    position: absolute;
+    left: 0;
+    font-size: 0.8em;
+    top: 3px;
+}
+
+
+dd {
+    
+    margin-left: 20px; 
+    
+    
+    padding: 15px;
+    background-color: var(--white);
+    border-left: 3px solid var(--kiemeles-kek); 
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+
+/* =================================================== */
+/* 6. ESZKÖZÖK OLDAL*/
+/* =================================================== */
+
+#eszkozok-layout {
+    display: block; 
+    margin: 20px ; /* Térköz a navigációval összhangban */
+}
+
+
+.main-content-area table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin: 30px 0;
+    
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    background-color: var(--white);
+}
+
+.main-content-area table thead th {
+    background-color: var(--table-header-bg); 
+    color: var(--white);
+    font-weight: 700;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: none;
+}
+
+.main-content-area table th, .main-content-area table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E5E5E5; 
+}
+
+
+.main-content-area table tbody th[rowspan] {
+    font-weight: 700;
+    color: var(--table-category-text); 
+    background-color: var(--table-category-bg); 
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    border-right: 3px solid var(--kiemeles-kek); 
+    box-shadow: inset -3px 0 8px rgba(0, 0, 0, 0.08); 
+}
+
+.main-content-area table tbody tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+
+/* --------------------------------------------------- */
+/* SIDEBAR */
+/* --------------------------------------------------- */
+.sidebar-area {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #E0E0E0;
+    margin-top: 20px;
+}
+.sidebar-area h3 {
+    color: var(--kiemeles-kek);
+    font-size: 1.3rem;
+}
+.edzes-blokk {
+    border-top: 1px dashed #ccc;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.edzes-lista {
+    margin-left: 20px;
+    padding: 0;
+    list-style-type: '👉';
+}
+.edzes-lista li {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+
+/* --------------------------------------------------- */
+/* DESKTOP ELRENDEZÉS */
+/* --------------------------------------------------- */
+
+@media (min-width: 1024px) {
+    
+    #eszkozok-layout {
+        display: grid;
+        width: 100%;
+
+        grid-template-columns: 1fr minmax(0, 1200px) 30px 1fr;
+        gap: 0; 
+        align-items: start; 
+        margin-left: 0; 
+        margin-right: 0;
+    }
+
+    #eszkozok-layout main.container {
+        grid-column: 2 / 3; 
+        margin: 0; 
+        padding-left: 0; 
+        padding-right: 0;
+        width: 100%;
+    }
+    
+    #eszkozok-layout aside.sidebar-area {
+        grid-column: 4 / 5; 
+        
+        margin: 0;
+        padding-right: 0;
+        padding-left: 25px;
+
+        
+        border-radius: 10px 0 0 10px; 
+        border-right: none;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05); 
+        min-height: 100%;
+        
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* =================================================== */
+/* Sportoló kártya*/
+/* =================================================== */
+
+
+.sportolo-blokk {
+    background-color: var(--white);
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+    margin: 25px 0;
+    padding: 15px;
+    overflow: hidden; 
+}
+
+.sportolo-blokk img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; 
+    display: block;
+    margin-top: 15px; 
+}
+
+
+.sportolo-text {
+    padding: 0 5px;
+}
+.sportolo-text h3 {
+    color: var(--nav-bg); 
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+
+/* --------------------------------------------------- */
+/* DESKTOP ELRENDEZÉS*/
+/* --------------------------------------------------- */
+
+@media (min-width: 768px) {
+    
+    .sportolo-blokk {
+        display: flex; 
+        align-items: center; 
+        gap: 30px; 
+        padding: 30px; 
+    }
+
+    .sportolo-text {
+        flex: 2; 
+        padding: 0; 
+    }
+
+    .sportolo-blokk img {
+        flex: 1; 
+        max-width: 350px; 
+        margin-top: 0;
+    }
+    
+
+    
+    .sportolo-blokk.img-left {
+        flex-direction: row; 
+    }
+    
+    .sportolo-blokk.img-right {
+        flex-direction: row-reverse; 
+    }
+}
+
+
+    /* =================================================== */
+/* 8. KERÉKPÁR KALKULÁTOR ŰRLAP */
+/* =================================================== */
+
+.bike-calculator-form {
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: var(--white);
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+}
+
+.bike-calculator-form h2 {
+    color: var(--nav-bg);
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--nav-bg);
+}
+
+.form-hint {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/*általános input*/
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--kiemeles-kek);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+
+.radio-options label {
+    font-weight: 400;
+    color: var(--text-color);
+    display: inline-block;
+    margin-left: 5px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .15s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--kiemeles-kek);
+    cursor: pointer;
+}
+
+#calcBtn {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+#calcBtn:hover {
+    background-color: var(--kiemeles-kek);
+}
+
+/* Eredmény doboz stílusa */
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid var(--kiemeles-kek);
+    border-radius: 10px;
+    background-color: #F8F8FF;
+}
+
+.result-box h3 {
+    color: var(--kiemeles-kek);
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.result-box p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+/* =================================================== */
+/* 9. VERSENY TEMPÓ KALKULÁTOR */
+/* =================================================== */
+
+.pace-calculator-container {
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: var(--white);
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+}
+
+
+.split-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.split-table th, .split-table td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.split-table th {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.split-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.split-table .total-row {
+    background-color: var(--kiemeles-kek);
+    color: var(--white);
+    font-weight: 700;
+}
