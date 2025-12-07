@@ -1,0 +1,776 @@
+/* =================================================== */
+/* 1. BETŰTÍPUS IMPORTÁLÁSA (Teljes Link) */
+/* =================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+/* =================================================== */
+/* 2. ALAP BEÁLLÍTÁSOK (RESET & BODY) */
+/* =================================================== */
+
+/* Minden elem alaphelyzetbe állítása */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #E0F7FA;       /* Világos babakék háttér */
+    --nav-bg: #003366;         /* Sötétkék a navigációhoz */
+    --text-color: #333;        /* Sötétszürke szöveg */
+    --white: #fff;
+    --btn-hover: rgba(255, 255, 255, 0.2); /* Átlátszó fehér hoverhez */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    /* Kis padding, hogy a lebegő menü ne érjen a széléhez mobilon sem */
+    padding: 0; 
+}
+
+/* Képek reszponzivitása */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =================================================== */
+/* 3. FEJLÉC ÉS NAVIGÁCIÓ (Mobile & Tablet nézet - Alapértelmezett) */
+/* =================================================== */
+
+/* Ez a "doboz", ami kiemelkedik a body-ból */
+.main-header {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    border-radius: 15px;       /* Lekerekített sarkok */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Erős árnyék a kiemeléshez */
+    padding: 20px;
+    margin: 10px;       /* Térköz a tartalom előtt */
+}
+
+/* A header belső elrendezése (Flexbox - Oszlopos) */
+.header-container {
+    display: flex;
+    flex-direction: column;    /* Egymás alá rendezés (Mobil/Tablet) */
+    align-items: center;       /* Középre igazítás */
+    text-align: center;
+    gap: 20px;                 /* Térköz az elemek között */
+}
+
+/* Logó formázása fehér kör háttérrel */
+.logo img {
+    height: 70px;              /* Kicsit növeltem a méreten, hogy a körrel együtt is jól mutasson */
+    width: 70px;               /* Legyen négyzetes az arány a körhöz */
+    background-color: #fff;    /* Tiszta fehér háttér */
+    border-radius: 50%;        /* Ez csinál belőle kört */
+    padding: 10px;             /* Térköz: így a logó nem ér a kör széléhez, "levegős" lesz */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Kis árnyék, hogy kiemelkedjen a kékből */
+    object-fit: contain;       /* Biztosítja, hogy a logó ne torzuljon a körön belül */
+}
+
+/* Cím (H1) - Nagy és jól látható */
+.header-container h1 {
+    font-size: 2rem;           /* Nagy méret mobilon is */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+/* Navigációs lista */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;    /* Egymás alá rendezés */
+    gap: 15px;                 /* Térköz a gombok között */
+    width: 100%;               /* Mobilon töltse ki a szélességet */
+}
+
+/* MENÜPONTOK (GOMB HATÁS) - STABIL VERZIÓ 3: FIX MINIMÁLIS MAGASSÁG */
+.main-nav li, .main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    
+    /* Gomb stílus */
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 12px 25px;
+    border-radius: 8px;
+    
+    /* Fix magasság (65px) beállítása: Ez a magasság kényelmesen elnyel 2 sornyi szöveget 
+       az 1.1rem betűméret mellett, így nem ugrik az oldal. */
+    min-height: 65px; 
+    
+    /* A szöveg vertikális középre igazítása és a sortörött szöveg kezelése */
+    display: flex;
+    align-items: center;    /* Vertikálisan középre igazítja a szöveget */
+    justify-content: center;/* Horizontálisan középre igazítja a szöveget */
+    text-align: center;     /* Ez biztosítja, hogy a sortörött szöveg is középre kerüljön */
+    
+    /* TRÜKK: Már alapból legyen kerete, de legyen átlátszó! 
+       Így nem változik a mérete hoverkor. */
+    border: 2px solid transparent; 
+    
+    /* Fontos: A doboz méretezésébe számítson bele a keret is */
+    box-sizing: border-box; 
+    
+    transition: all 0.3s ease; 
+    cursor: pointer;
+    
+    /* Megakadályozza a véletlen elcsúszást transzformációkor */
+    backface-visibility: hidden; 
+}
+
+/* Hover (rávitel) effektus */
+.main-nav a:hover, .main-nav li:hover {
+    background-color: var(--btn-hover);
+    
+    /* Itt csak a szín változik, a méret nem, így nem ugrál */
+    border-color: rgba(255, 255, 255, 0.5); 
+    
+    transform: translateY(-2px); /* Kicsi emelés */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* =================================================== */
+/* 4. LAPTOP ÉS DESKTOP NÉZET (Min-width: 1024px) */
+/* =================================================== */
+
+@media (min-width: 1024px) {
+    .header-container {
+        flex-direction: row;      /* Váltás soros elrendezésre (egymás mellé) */
+        justify-content: space-between; /* Széthúzás a két szélre */
+        padding: 10px 30px;
+    }
+
+    .main-nav {
+        flex-grow: 0; /* Nem nyúlik feleslegesen */
+    }
+
+    .main-nav ul {
+        flex-direction: row;      /* Menüpontok egymás mellé */
+        align-items: center;
+    }
+
+    /* A címet kicsit kisebbre vesszük desktopon, ha kell, 
+       vagy hagyjuk nagyban, de balra igazítva a logó mellé */
+    .header-container h1 {
+        font-size: 2.2rem;
+        margin: 0 20px;
+        flex-grow: 1;             /* Kitölti a helyet középen */
+        text-align: left;
+    }
+}
+
+/* =================================================== */
+/* 5. TARTALOM ÉS EGYÉB FORMÁZÁSOK */
+/* =================================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Főcím a tartalomban */
+section h3 {
+    font-size: 2.5rem;
+    color: var(--nav-bg);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Bekezdések */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Kép galéria (Grid rendszer - 3 oszlop) */
+.image {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.image img {
+    width: 100%;
+    height: 250px; /* Egységes magasság */
+    object-fit: cover; /* Levágja a felesleget torzítás nélkül */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.image img:hover {
+    transform: scale(1.07); /* Kicsit ráközelít ha ráviszed az egeret */
+}
+
+/* Lábléc */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--nav-bg);
+    color: white;
+    margin-top: 50px;
+    border-radius: 15px 15px 0 0; /* Csak felül kerekítve */
+}
+
+/* =================================================== */
+/* TÁBLÁZAT STÍLUS (Távok Világa - Tavok.html) */
+/* =================================================== */
+
+
+/* style.css - Kiegészítés a táblázat túlcsordulásához */
+@media (max-width: 768px) {
+    .table-responsive-wrapper {
+        width: 100%;
+        overflow-x: auto; /* Engedi a vízszintes görgetést, ha a táblázat túl széles */
+        margin-bottom: 20px;
+    }
+}
+
+.tavok-table {
+    width: 100%;
+    border-collapse: collapse; /* A kulcs: eltünteti a cellák közötti térközt és a duplázódó szegélyeket */
+    margin: 30px 0;
+    
+    /* Modern kiemelés és lekerekítés */
+    border-radius: 10px; 
+    overflow: hidden; /* Ez biztosítja, hogy a sarkok lekerekítése látszódjon a belső tartalomnál is */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Enyhe árnyék a kiemeléshez */
+    background-color: var(--white); /* Fehér háttér a celláknak */
+    border: none; /* Biztos, ami biztos, nincs külső keret */
+}
+
+/* Táblázat fejléce (kontrasztos háttér) */
+.tavok-table thead th {
+    background-color: var(--nav-bg); /* Sötétkék a header háttér */
+    color: var(--white);
+    font-weight: 700;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: none; /* Nincs szegély a header cellákon */
+}
+
+/* Cella stílusok (belső, vékony vonalak) */
+.tavok-table th, .tavok-table td {
+    padding: 12px 15px;
+    text-align: left;
+    
+    /* Vékony, kontrasztos belső vonalak (itt egy nagyon világos szürke) */
+    border-bottom: 1px solid #E0E0E0; 
+    border-right: 1px solid #F0F0F0; /* Vertikális vonal kicsit halványabban */
+}
+
+/* A legelső oszlop (a távok neve) kiemelése */
+.tavok-table tbody th {
+    font-weight: 600;
+    background-color: var(--bg-color); /* Babakék háttér a kategóriáknak */
+}
+
+
+/* Az utolsó oszlopnak nincs jobb szegélye, az utolsó sornak nincs alsó szegélye */
+.tavok-table th:last-child, .tavok-table td:last-child {
+    border-right: none;
+}
+.tavok-table tbody tr:last-child td,
+.tavok-table tbody tr:last-child th {
+    border-bottom: none;
+}
+
+/* Opcionális: a páratlan sorok fehér, a páros sorok halvány szürke hátteret kapnak, 
+   ha a babakék háttér nem elég kontrasztos */
+.tavok-table tbody tr:nth-child(odd) {
+    background-color: var(--white);
+}
+.tavok-table tbody tr:nth-child(even) {
+    background-color: #FAFAFA; /* Nagyon halvány szürke */
+}
+
+/* =================================================== */
+/* DEFINÍCIÓS LISTA (DL) TAGOLÁSA ÉS STÍLUSO KÖNYVEKHEZ */
+/* =================================================== */
+
+/* Fő szekció címek (H2, H3) */
+section h2, section h3 {
+    color: var(--nav-bg); /* Sötétkék címek */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #E0E0E0; /* Vékony vonal a tagoláshoz */
+    padding-bottom: 5px;
+}
+section h2 {
+    font-size: 1.8rem;
+}
+section h3 {
+    font-size: 1.5rem;
+    color: var(--text-color); /* H3 lehet sötétebb szürke */
+}
+
+
+/* Definíciós lista (a tartalomtároló) */
+dl {
+    margin-bottom: 30px; /* Térköz a szekciók között */
+    padding: 0 10px;
+}
+
+/* Kiemelt Cím (DT - pl. Ironman, WTCS) */
+dt {
+    font-weight: 700; /* Félkövér */
+    font-size: 1.2rem;
+    color: var(--kiemeles-kek); /* Kék kiemelés a címen */
+    margin-top: 20px;
+    margin-bottom: 5px;
+    
+    /* Hozzáadhatunk egy pontot vagy ikont a cím elé, mint egy felsorolás */
+    position: relative;
+    padding-left: 20px;
+}
+dt::before {
+    content: "🔷"; /* Kék négyzet vagy pont */
+    color: var(--kiemeles-kek);
+    position: absolute;
+    left: 0;
+    font-size: 0.8em;
+    top: 3px;
+}
+
+/* Leírás (DD) - Olyan, mint egy bekezdés */
+dd {
+    /* Eltolás a DT címhez képest (mint egy behúzás) */
+    margin-left: 20px; 
+    
+    /* Kiemelt háttér és keret, hogy jobban szétválassza a szekciókat */
+    padding: 15px;
+    background-color: var(--white);
+    border-left: 3px solid var(--kiemeles-kek); /* Vékony függőleges kék vonal */
+    border-radius: 20px;
+    margin-bottom: 20px; /* Térköz a következő fogalom előtt */
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* =================================================== */
+/* KIEGÉSZÍTÉS a :root-hoz (Színváltozók) */
+/* (Csak akkor illeszd be ezt a blokkot, ha a változók még hiányoznak!) */
+/* =================================================== */
+:root {
+    /* ... Egyéb változók (pl. --nav-bg) ... */
+    --kiemeles-kek: #007BFF;       /* Kék kiemelés színkódja */
+    --table-header-bg: #003366;    /* Sötétkék fejléc (megegyezik a nav-bg-vel) */
+    --table-category-bg: #E3F2FD;  /* Nagyon világos kék kategóriához */
+    --table-category-text: #003366; /* Sötétkék szöveg a kategóriában */
+}
+
+
+/* =================================================== */
+/* 6. ESZKÖZÖK OLDAL (FULL-WIDTH SIDEBAR & GRID LAYOUT) */
+/* =================================================== */
+
+/* --------------------------------------------------- */
+/* ALAP ELRENDEZÉS (Mobile/Tablet: Stacked) */
+/* --------------------------------------------------- */
+#eszkozok-layout {
+    display: block; 
+    margin: 20px ; /* Térköz a navigációval összhangban */
+}
+
+/* --------------------------------------------------- */
+/* ESZKÖZÖK TÁBLÁZAT STÍLUS (Kategória Kiemeléssel) */
+/* --------------------------------------------------- */
+
+.main-content-area table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin: 30px 0;
+    
+    /* Modern doboz design */
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    background-color: var(--white);
+}
+
+.main-content-area table thead th {
+    background-color: var(--table-header-bg); 
+    color: var(--white);
+    font-weight: 700;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: none;
+}
+
+.main-content-area table th, .main-content-area table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E5E5E5; 
+}
+
+/* KATEGÓRIA OSZLOP KIEMELÉS (Úszás, Kerékpározás, Futás) */
+.main-content-area table tbody th[rowspan] {
+    font-weight: 700;
+    color: var(--table-category-text); 
+    background-color: var(--table-category-bg); 
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    /* A kategória kiemelő vizuális tagolása: */
+    border-right: 3px solid var(--kiemeles-kek); 
+    box-shadow: inset -3px 0 8px rgba(0, 0, 0, 0.08); 
+}
+
+/* Sorok váltakozó színe (zebra csíkozás) */
+.main-content-area table tbody tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+
+/* --------------------------------------------------- */
+/* SIDEBAR (Edzésterv) STÍLUS */
+/* --------------------------------------------------- */
+.sidebar-area {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #E0E0E0;
+    margin-top: 20px; /* Térköz mobilnézetben a main tartalom alatt */
+}
+.sidebar-area h3 {
+    color: var(--kiemeles-kek);
+    font-size: 1.3rem;
+}
+.edzes-blokk {
+    border-top: 1px dashed #ccc;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.edzes-lista {
+    margin-left: 20px;
+    padding: 0;
+    list-style-type: '👉'; /* Kisebb, figyelemfelkeltő ikon */
+}
+.edzes-lista li {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+
+/* --------------------------------------------------- */
+/* DESKTOP ELRENDEZÉS (Min-width: 1024px) - FULL-WIDTH SIDEBAR */
+/* --------------------------------------------------- */
+
+@media (min-width: 1024px) {
+    
+    /* A FŐ GRID KONTÉNER BEÁLLÍTÁSA */
+    #eszkozok-layout {
+        display: grid;
+        width: 100%;
+        /* 4 oszlop a trükk:
+           1. Bal Üres Tér (1fr, rugalmas)
+           2. Fő Tartalom (MAX 1200px + padding)
+           3. Térköz (30px fix)
+           4. Sidebar + Jobb Üres Tér (1fr, rugalmas, kitölti a képernyő széléig)
+        */
+        grid-template-columns: 1fr minmax(0, 1200px) 30px 1fr;
+        gap: 0; 
+        align-items: start; 
+        margin-left: 0; 
+        margin-right: 0;
+    }
+
+    /* FŐ TARTALOM: A 2. oszlopba kerül */
+    #eszkozok-layout main.container {
+        grid-column: 2 / 3; 
+        /* Felülírjuk az auto margót és a külső paddinget, a Grid intézi a centeringet */
+        margin: 0; 
+        padding-left: 0; 
+        padding-right: 0;
+        width: 100%;
+    }
+    
+    /* SIDEBAR: A 4. oszlopot tölti ki, a képernyő jobb széléig */
+    #eszkozok-layout aside.sidebar-area {
+        grid-column: 4 / 5; 
+        
+        /* Jobb oldalra feszítés */
+        margin: 0;
+        padding-right: 0; /* A tartalom jobbra a szélre tapad */
+        padding-left: 25px; /* Belső térköz az oldalsáv és a tartalom között */
+
+        /* Vizualitás */
+        border-radius: 10px 0 0 10px; /* Csak bal oldalon kerekítve */
+        border-right: none;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05); /* Árnyék a jobb szélen */
+        min-height: 100%;
+        
+        /* Belső tartalom igazítása (pl. a 4. oszlopban) */
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* =================================================== */
+/* 7. MAGYAR TRIATLON (Sportoló Kártyák) */
+/* =================================================== */
+
+/* --------------------------------------------------- */
+/* ALAP KÁRTYA STÍLUS (Mobile/Alapértelmezett) */
+/* Eredmény: Fehér, árnyékos buborék, Text felett, Kép alatt (a HTML sorrendje miatt) */
+/* --------------------------------------------------- */
+.sportolo-blokk {
+    background-color: var(--white);
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Enyhe, de látható árnyék */
+    margin: 25px 0;
+    padding: 15px;
+    overflow: hidden; 
+}
+
+/* Kép (Mobil: 100% szélesség, Text alatt van térköz) */
+.sportolo-blokk img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; 
+    display: block;
+    margin-top: 15px; 
+}
+
+/* Szöveg stílusa */
+.sportolo-text {
+    padding: 0 5px; /* Kis belső padding mobilon, hogy a szöveg ne tapadjon a széléhez */
+}
+.sportolo-text h3 {
+    color: var(--nav-bg); 
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+
+/* --------------------------------------------------- */
+/* DESKTOP ELRENDEZÉS (Kép és Szöveg egymás mellett, arányos) */
+/* --------------------------------------------------- */
+
+@media (min-width: 768px) {
+    
+    .sportolo-blokk {
+        display: flex; 
+        align-items: center; /* Függőlegesen középre igazítás */
+        gap: 30px; 
+        padding: 30px; 
+    }
+
+    /* Szöveg: 2/3 arány */
+    .sportolo-text {
+        flex: 2; 
+        padding: 0; 
+    }
+
+    /* Kép: 1/3 arány */
+    .sportolo-blokk img {
+        flex: 1; 
+        max-width: 350px; 
+        margin-top: 0;
+        /* A lekerekítést megismételjük a képen, hogy szép legyen */
+    }
+    
+    /* ----------------------------------------------- */
+    /* VÁLTAKOZÓ ELRENDEZÉS: kép jobbra és kép balra */
+    /* ----------------------------------------------- */
+    
+    /* img-left (Alapértelmezett HTML sorrend: Text -> Image) */
+    .sportolo-blokk.img-left {
+        flex-direction: row; 
+    }
+    
+    /* img-right: A kép a szövegtől jobbra jelenik meg */
+    .sportolo-blokk.img-right {
+        /* Felcseréli a kép és a szöveg sorrendjét a Text -> Image-ről Image -> Text-re */
+        flex-direction: row-reverse; 
+    }
+}
+
+
+    /* =================================================== */
+/* 8. KERÉKPÁR KALKULÁTOR ŰRLAP */
+/* =================================================== */
+
+.bike-calculator-form {
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    /* Fehér buborék stílus */
+    background-color: var(--white);
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+}
+
+.bike-calculator-form h2 {
+    color: var(--nav-bg);
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--nav-bg);
+}
+
+.form-hint {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Általános Input mezők stílusa */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--kiemeles-kek);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Rádió/Checkbox opciók stílusa */
+.radio-options label {
+    font-weight: 400; /* Visszaállítjuk a címkét normál súlyúra */
+    color: var(--text-color);
+    display: inline-block;
+    margin-left: 5px;
+}
+
+/* Range input vizuális formázása */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .15s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--kiemeles-kek);
+    cursor: pointer;
+}
+
+/* Gomb stílusa */
+#calcBtn {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+#calcBtn:hover {
+    background-color: var(--kiemeles-kek);
+}
+
+/* Eredmény doboz stílusa */
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid var(--kiemeles-kek);
+    border-radius: 10px;
+    background-color: #F8F8FF; /* Nagyon világos kék háttér */
+}
+
+.result-box h3 {
+    color: var(--kiemeles-kek);
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.result-box p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+/* =================================================== */
+/* 9. VERSENY TEMPÓ KALKULÁTOR (tavok.html) */
+/* =================================================== */
+
+.pace-calculator-container {
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: var(--white);
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+}
+
+/* Használjuk a korábban definiált .form-group és button stílusokat! */
+
+/* Eredmény Tábla Stílusai */
+.split-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.split-table th, .split-table td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.split-table th {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.split-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.split-table .total-row {
+    background-color: var(--kiemeles-kek);
+    color: var(--white);
+    font-weight: 700;
+}

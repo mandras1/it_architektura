@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Marton András">
+    <meta name="description" content="A triatlon bemutatása">
+    <title>TRItartás | Eszközök & Edzés</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/javascript/kerekpar_valaszto.js" defer></script>
+</head>
+<body>
+    <header class="main-header">
+<div class="header-container">
+        <a href="index.html" class="logo">
+            <img src="kepek/triatlon_logo.png" alt="triatlonos_logo">
+        </a>
+        <h1>Eszközök & Edzés</h1>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Kezdőlap</a></li>
+                <li><a href="tavok.html">Távok Világa</a></li>
+                <li>Eszközök & Edzés</li>
+                <li><a href="magyar-triatlon.html">Magyar Triatlon</a></li>
+                <li><a href="sportolok.html">Legendák napjainkban</a></li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+    
+    <div id="eszkozok-layout">
+        
+        <main class="container"> 
+            
+            <h2>Alapfelszerelés és Edzéstervek Kezdőknek</h2>
+            <p>A triatlonhoz nem kell azonnal profi felszerelés! Íme egy áttekintés arról, mi az elengedhetetlen a kezdéshez, és milyen edzéstervekkel érdemes belevágni a három sport összehangolásába.</p>
+
+            <section> 
+                <div class="main-content-area">
+                    
+                    <h3>A Triatlon Eszközei Sportágakra Bontva</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sportág</th>
+                                <th>Kategória</th>
+                                <th>Elengedhetetlen eszközök</th>
+                                <th>Ajánlott eszközök</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <th rowspan="4">Úszás</th>
+                                <th>Ruházat</th>
+                                <td>Fürdőruha vagy Triatlon ruha</td>
+                                <td>Neoprén ruha (hideg vízhez)</td>
+                            </tr>
+                            <tr>
+                                <th>Alapfelszerelés</th>
+                                <td>Úszósapka, úszószemüveg</td>
+                                <td>Vízálló sportóra (távolságméréshez)</td>
+                            </tr>
+                            <tr>
+                                <th>Edzés</th>
+                                <td colspan="2">Deszka, lábbója, tenyérellenállás, teknőc, uszony</td>
+                            </tr>
+                            <tr>
+                                <th>Verseny</th>
+                                <td colspan="2">Nincs szükség extra eszközre (kivéve a neoprén ruha)</td>
+                            </tr>
+                            
+                            <tr>
+                                <th rowspan="3">Kerékpározás</th>
+                                <th>Kerékpár</th>
+                                <td>Bármilyen, működőképes országúti vagy mountain bike</td>
+                                <td>Országúti kerékpár, időfutam kerékpár (lehetőleg UCI hitelesített)</td>
+                            </tr>
+                            <tr>
+                                <th>Biztonság</th>
+                                <td>**Bukósisak (Kötelező!)**</td>
+                                <td>Napszemüveg, szerszámkészlet, pumpa, pótbelső</td>
+                            </tr>
+                            <tr>
+                                <th>Edzés/Verseny</th>
+                                <td>Kulacsok (izotóniás itallal)</td>
+                                <td>GPS-es kerékpáros komputer, teljesítménymérő</td>
+                            </tr>
+                            
+                            <tr>
+                                <th rowspan="2">Futás</th>
+                                <th>Lábbeli</th>
+                                <td>Futócipő (kényelmes, stabil)</td>
+                                <td>Versenyfutócipő, rugalmas cipőfűző</td>
+                            </tr>
+                            <tr>
+                                <th>Egyéb</th>
+                                <td>Rajtszámöv (versenyhez)</td>
+                                <td>Pulzusmérő (öv/óra), kulacs tartó öv</td>
+                            </tr>
+                            
+                            <tr>
+                                <th>Depó (T1/T2)</th>
+                                <td colspan="3">Törölköző, gél(ek), frissítő (Mindenképp érdemes gyakorolni!)</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+             <section class="bike-calculator-form container">
+                <h2>🚲 Triatlon Kerékpár Kalkulátor</h2>
+                <p>Add meg a főbb paramétereidet és a célversenyed távját, hogy ajánlást kapj az ideális kerékpár vázméretre és típusra!</p>
+                
+                <form id="bikeCalcForm" action="#" method="get">
+                    
+                    <div class="form-group">
+                        <label for="userName">A neved:</label>
+                        <input type="text" id="userName" name="userName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="height">Testmagasság (cm):</label>
+                        <input type="number" id="height" name="height" min="140" max="210" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inseam">Belső lábhossz (cm):</label>
+                        <input type="number" id="inseam" name="inseam" min="60" max="100" required>
+                        <small class="form-hint">Mérd meg a talpadtól az ágyékodig!</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Célverseny Távja (Típus):</label>
+                        <div class="radio-options">
+                            <input type="radio" id="olimpiai" name="distanceType" value="olimpiai" required>
+                            <label for="olimpiai">Olimpiai (Sprint / Standard)</label><br>
+                            
+                            <input type="radio" id="halfiron" name="distanceType" value="halfiron">
+                            <label for="halfiron">Fél Ironman (70.3)</label><br>
+                            
+                            <input type="radio" id="fulliron" name="distanceType" value="fulliron">
+                            <label for="fulliron">Teljes Ironman (140.6)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="aerobar" name="aerobar" value="yes">
+                        <label for="aerobar">Kizárólag időfutam pozícióban szeretnék kerékpározni.</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Hozzávetőleges Költségvetés (ezer Ft): <span id="budgetValue">100</span> ezer Ft</label>
+                        <input type="range" id="budget" name="budget" min="100" max="2000" step="50" value="100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Triatlon tapasztalat:</label>
+                        <select id="experience" name="experience" required>
+                            <option value="" disabled selected>-- Válassz --</option>
+                            <option value="kezdo">Kezdő (első verseny)</option>
+                            <option value="halado">Haladó (van tapasztalat)</option>
+                            <option value="prof">Professzionális</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="calcBtn">Ajánlat Kérése</button>
+                    
+                    <div id="resultContainer" class="result-box" style="display:none;">
+                        <h3>Ajánlásunk:</h3>
+                        <p id="bikeTypeResult"></p>
+                        <p id="bikeSizeResult"></p>
+                        <p id="recommendationText"></p>
+                    </div>
+                    
+                </form>
+            </section>
+        </main>
+        
+        <aside class="sidebar-area">
+            <section class="edzes-tippek">
+                <h3>📋 Edzésterv Tippek Kezdőknek</h3>
+                <p>Ide gyűjtheted azokat a rövid, konkrét edzéseket és tippeket, amelyek segítenek a három sportág összehangolásában. (Pl. egy bemelegítés, egy fő rész, és egy levezetés ötlet)</p>
+                
+                <article class="edzes-blokk">
+                    <h3>Úszás Tipp: Technika Fókusz</h3>
+                    <ul class="edzes-lista">
+                        <li>Laza úszás bemelegítés: 600m</li>
+                        <li>Technika rész: 8 x 50m (pl. jobb kar, bal kar, csúsztatás, söprés)</li>
+                        <li>Fő rész: 10 x 100m tempó úszás</li>
+                        <li>Levezetés: 200m</li>
+                    </ul>
+                </article>
+                
+                <article class="edzes-blokk">
+                    <h3>Kerékpár Tipp: Erő és Fordulatszám</h3>
+                    <ul class="edzes-lista">
+                        <li>Bemelegítés: 30perc laza</li>
+                        <li>Fő rész: 2 x 10 perc erős és 8perc laza</li>
+                        <li>Levezetés: 30 perc laza</li>
+                    </ul>
+                </article>
+                
+                <article class="edzes-blokk">
+                    <h3>Futás Tipp: Dinamizmus</h3>
+                    <ul class="edzes-lista">
+                        <li>Bemelegítés: 20perc laza</li>
+                        <li>Technika rész: futóiskola (legalább 5 különböző gyakorlat)</li>
+                        <li>Fő rész: 8 x 400m tempó</li>
+                        <li>Leveztés: 15 perc</li>
+                    </ul>
+                </article>
+
+                <article class="edzes-blokk">
+                    <h3>Depózás: Rutin</h3>
+                    <ul class="edzes-lista">
+                        <li>Bemelegítés: 20perc kerékpár és 10perc futás</li>
+                        <li>Technika rész: kanyarok gyakorlás kerékpáron</li>
+                        <li>Fő rész: tégla edzés (4*2km és 200m)</li>
+                        <li>Leveztés: 15 perc kerékpár</li>
+                    </ul>
+                </article>
+
+                <article class="edzes-blokk">
+                    <h3>Egyéb tippek</h3>
+                    <ul class="edzes-lista">
+                        <li>Érdemes befőttesgumival rögzíteni a kerékpáros cipőt</li>
+                        <li>Érdemes géleket fogyasztani edzés közben</li>
+                        <li> nap végén mindig szánj 30 percet a nyújtásra</li>
+                    </ul>
+                </article>
+                
+            </section>
+        </aside>
+    </div>
+    
+    
+   
+    <footer>
+        <p class="copyright">
+            &copy; 2025 TRItartás.hu. Minden jog fenntartva.
+        </p>
+    </footer>    
+</body>
+</html>
